@@ -1,0 +1,233 @@
+body {
+    background-color: #eee;
+    font-family: 'Montserrat';
+}
+
+.card {
+    border-radius: 20px;
+}
+
+.card-header {
+    background-color: transparent;
+    border: none;
+}
+
+.thumb-container {
+    width: 216px;
+    height: 250px;
+    float: left;
+    margin: 15px 1px;
+    position: relative;
+    top: 0px;
+}
+
+.thumb-container {
+    transition: all .2s;
+}
+
+.thumb-container:hover {
+    transform: scale(1.03);
+}
+
+.thumb-container.thumb-container-selected {
+    transform: scale(.95);
+}
+
+
+.thumb-container .thumb-image {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    border-radius: 20px;
+    transition: all .2s;
+}
+
+.thumb-container .thumb-image {
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: transparent;
+    box-shadow: inset #000000 0 0 1px;
+}
+
+.thumb-container-blank .thumb-image {
+    border: dotted #007bff 2px;
+}
+
+.thumb-container-blank .thumb-image .svg-icon-upload {
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.thumb-container-error .thumb-image {
+    border: dotted #007bff 2px;
+}
+
+.thumb-container-error .thumb-image .svg-icon-error {
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.thumb-container-loading .thumb-image {
+    border: dotted #007bff 2px;
+}
+
+.thumb-container-loading .thumb-image .spinner-loading {
+    width: 80px; height: 80px;
+    margin-top: 60px;
+    margin-left: 60px;
+}
+
+.thumb-container-proccessing .thumb-image {
+    border: dotted #007bff 2px;
+}
+
+.thumb-container .badge-proccessing {
+    display: none;
+}
+
+.thumb-container .badge-view {
+    display: none;
+
+}
+
+.thumb-container .badge-delete {
+    z-index: 3;
+    display: none;
+}
+
+.thumb-container-proccessing .spinner-proccessing {
+    display: block;
+    width: 25px; height: 25px;
+    margin-top: 3px;
+    margin-left: 3px;
+}
+
+.thumb-container .thumb-badge {
+    border-radius: 30px;
+    position: absolute;
+    left: 5px;
+    background-color: rgb(255, 255, 255);
+    height: 31px;
+    width: 31px;
+    box-shadow: #0005 0 0 2px;
+    cursor: pointer;
+}
+
+.thumb-container .thumb-badge:hover {
+    box-shadow: #0005 0 0 6px;
+}
+
+.thumb-container-proccessing .badge-proccessing {
+    display: block;
+    z-index: 3;
+}
+
+.thumb-container-selected .thumb-image {
+    background-color: #007bff99;
+}
+
+.thumb-container-selected .thumb-selectbox {
+    border-radius: 20px;
+    position: absolute;
+    top: 90px;
+    left: 90px;
+}
+
+.thumb-container-deletable .badge-delete {
+    display: block;
+    background-color: red;
+    color:rgb(255, 255, 255);
+}
+
+.thumb-container-deletable .badge-delete .thumb-deletemark {
+    display: block;
+    font-size: 40px;
+    position: relative;
+    top: -18px;
+    left: 8px;
+}
+
+.thumb-container-viewable .badge-view {
+    display: block;
+}
+
+.thumb-container-viewable .badge-view .thumb-viewmark {
+    display: block;
+    font-size: 40px;
+    position: relative;
+    top: -18px;
+    left: 7px;
+}
+
+.thumb-container-selected .thumb-selectmark {
+    display: inline-block;
+    transform: rotate(45deg);
+    height: 50px;
+    width: 24px;
+    margin-left: 60%; 
+    border-bottom: 5px solid #ffffffdd;
+    border-right: 5px solid #ffffffdd;
+}
+
+.thumbs-container .thumb-corner-effect {
+    position: absolute;
+    top: 175px;
+    left: 135px;
+}
+
+.thumb-container .thumb-corner-effect-triangle {
+    float: right;
+}
+
+.thumb-container .thumb-corner-effect-1 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 40px 40px;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+.thumb-container .thumb-corner-effect-2 {
+    margin-right: -40px;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 40px 40px 0 0;
+    border-color: #007bff transparent transparent transparent;
+}
+
+
+.thumb-container .thumb-corner-effect-3 {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 40px 40px;
+    border-color: transparent transparent #007bff55 transparent;
+}
+
+.thumb-container .thumb-label {
+    position: absolute;
+    top: 220px;
+    width: 100%;
+    text-align: center;
+    max-height: 50px;
+    overflow: hidden;
+}
+
+.replacment-type-thumbs-container .thumb-container-replacment-stretch .thumb-image {
+    background-image: url('img/replacment-stretch.png');
+}
+.replacment-type-thumbs-container .thumb-container-replacment-fill .thumb-image {
+    background-image: url('img/replacment-fill.png');
+}
+.replacment-type-thumbs-container .thumb-container-replacment-fit .thumb-image {
+    background-image: url('img/replacment-fit.png');
+}
+.replacment-type-thumbs-container .thumb-container-replacment-tile .thumb-image {
+    background-image: url('img/replacment-tile.png');
+}
+.replacment-type-thumbs-container .thumb-container-replacment-center .thumb-image {
+    background-image: url('img/replacment-center.png');
+}

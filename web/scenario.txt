@@ -1,0 +1,82 @@
+
+Web Server
+
+endpoints: 
+    GET /{callbackUrl}
+    GET /files/{fileName}
+    POST /$.callback
+
+1. user submits job to API.
+2. server 
+    1) hosts user files on public url 
+    2) makes a POST call to Queue Server API `new-job` with recipe payload:
+        {
+            baseUrl: "http://host/api/files/",
+            inputs: [
+                "md5xxxxx.psd", "md5zzzzz.jpg", "md5yyyyy.jpg"
+            ],
+            base: "md5xxxxx.psd",
+            tasks: [
+                {
+                    type: "smart_replace",
+                    from: "md5yyyyy.jpg",
+                    to: [1, 2] // target layer's index array in layers tree
+                },
+                {
+                    type: "smart_replace_resized",
+                    from: "md5zzzzz.jpg",
+                    to: [1, 2],
+                    resizeMode: null|"stretch"|"fit"|"fill"|"tile"|"center"
+                },
+                {
+                    type: "layer_list",
+                }
+            ],
+            outputs: [ // ? if present saves file as
+                {
+                    type: "jpg",
+                    name: "out.jpg",
+                    quality: 80
+                }
+            ],
+            callback: "http://host/api/queue_callback"
+        }
+
+3. listens on $.callback endpoint for POST call from queue server to recieve payload with details of completed job
+    {
+        id: 123,
+        baseUrl: "http://qserv/api/files/123/",
+        outputs: ["out.jpg"],
+        output: {"layer_tree":{...}}
+    }
+
+
+
+
+Queue Server & JSX script
+
+endpoints:
+    POST /new-job
+    POST /update-job/
+    GET  /get-job/{jobId}
+    GET  /apifiles/{fileName}
+
+1. listens for call on `new-job` API from web server
+2. creates recieved job from `new-job` endpoint and dispatches to `jsx` queue 
+3. creates new JobDetail model belonging to job_id, saves job payload as `input`
+3. transloads files defined in job payload $.inputs if same name not exists in local storage
+4. job worker reaches queued job executes jsx with jobId argument
+5. JSX script makes GET call to queue server's `get-job` endpoint to recieve JobDetail input
+    {
+        id: 123,
+        input: { ... as defined in web server job load},
+        output: { ... }, // as set using POST json to `update-job`
+        status: "dispatched"|"downloaded"|"proccessing"|"done" // as set using POST `update-job` endpoint `?status=` querystring
+    }
+
+6. JSX script proccesses the recipe (job payload), can update the status via POST to `update-job` endpoint as described above
+7. JSX script saves output files to server available at a public url
+8. JSX script makes POST call to queue server's `update-job` endpoint to save JobDetail output
+9. JSX execution is terminated, queue server makes POST call to web server $.callback url to notify with paylaod described in web server
+10. Job is removed from the queue
+

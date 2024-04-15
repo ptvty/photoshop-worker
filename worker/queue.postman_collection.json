@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "b994917c-2092-48ce-8d7d-d431114cf05f",
+		"name": "ca",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "add job",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"baseUrl\": \"http://localhost:8030/api/files\",\r\n    \"inputs\": [\"00deb7aab64506678864486d17661a89.psd\"],\r\n    \"base\": \"00deb7aab64506678864486d17661a89.psd\",\r\n    \"tasks\": [{\"type\": \"layer_tree\"}],\r\n    \"outputs\": [{\"type\": \"jpg\"}],\r\n    \"callback\": \"http://localhost:8030/api/queue_callback/mocks/12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8031/api/jsx/new-job",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8031",
+					"path": [
+						"api",
+						"jsx",
+						"new-job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add job replace",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"baseUrl\": \"http://localhost:8030/api/files\",\r\n    \"inputs\": [\"0ad2334b83e9a9848e2e3155d8a96017.psd\", \"1343a2c8f33ed12ccf5b1f8624a65c95.jpg\"],\r\n    \"base\": \"0ad2334b83e9a9848e2e3155d8a96017.psd\",\r\n    \"tasks\": [{\r\n        \"type\": \"smart_replace_resized\",\r\n        \"from\": \"1343a2c8f33ed12ccf5b1f8624a65c95.jpg\",\r\n        \"to\": [0, 0],\r\n        \"resizeMode\": \"tile\"\r\n    }],\r\n    \"outputs\": [{\"type\": \"jpg\"}],\r\n    \"callback\": \"http://localhost:8030/api/queue_callback/mocks/12\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8031/api/jsx/new-job",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8031",
+					"path": [
+						"api",
+						"jsx",
+						"new-job"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get job",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8031/api/jsx/get-job/39",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8031",
+					"path": [
+						"api",
+						"jsx",
+						"get-job",
+						"39"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
