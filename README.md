@@ -4,7 +4,11 @@ Automate Photoshop tasks using Photoshop's ExtendScript (JSX) and an easy to use
 
 ## ⚠️ Attention
 
-This project was created some time ago and may still be compatible with newer versions of Adobe Photoshop. However, please note that it is no longer actively maintained. Feel free to draw inspiration from it and modernize its workflow according to your requirements.
+This project was created long ago and may still be compatible with newer versions of Adobe Photoshop. However, please note that it is no longer actively maintained. Feel free to draw inspiration from it and modernize its workflow according to your requirements.
+
+## ▶️ Demo Video
+
+https://github.com/ptvty/photoshop-worker/assets/150298820/149ddf26-3fe1-40ef-8f2b-00b61e97e598
 
 ## 🛠️ Installation
 
